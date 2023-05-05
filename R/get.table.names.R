@@ -2,6 +2,10 @@
 #'
 #' @return a vector of table names
 #' 
+#' @examples
+#' names <- get.table.names()
+#' 
+#' 
 #' @export
 get.table.names <- function() {
     con <- flourish.connection()

@@ -12,3 +12,9 @@ a database connection
 \description{
 Establish a database connection to Flourish
 }
+\examples{
+con <- flourish.connection()
+RMySQL::dbDisconnect(con)
+
+
+}

@@ -12,3 +12,8 @@ a vector of table names
 \description{
 Get a vector containing the names of the tables in a database
 }
+\examples{
+names <- get.table.names()
+
+
+}

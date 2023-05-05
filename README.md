@@ -14,3 +14,10 @@ Having a tools package used by these will insure consistency
 
 *Note:  This is a work in progress*
 
+## Installation
+To install:
+```
+install.packages('mconlon17/goctools')
+library(goctools)
+```
+
