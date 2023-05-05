@@ -4,7 +4,7 @@ goctools is an R package for the [Gainesville Opportunity center](https://goclub
 
 Tools will include database access, data cleaning, dashboard widgets, plots, and reports.
 
-Tools will be used from 
+Tools will be usable from 
 
 1. the command line 
 1. the GOC R server in batch jobs controlled by cron 

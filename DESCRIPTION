@@ -8,7 +8,9 @@ Description: Software for database access, dashboard widgets, reports, plots, an
 License:
     GPL-3 + file LICENSE
 Imports:
-    RMySQL, 
+    RMySQL,
+    DBI,
+    dplyr,
     keyring
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -5,7 +5,7 @@
 #' @export
 get.table.names <- function() {
     con <- flourish.connection()
-    x <- dbListTables(con)
-    dbDisconnect(con)
+    x <- RMySQL::dbListTables(con)
+    RMySQL::dbDisconnect(con)
     x
 }

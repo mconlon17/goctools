@@ -2,7 +2,7 @@
 % Please edit documentation in R/get.table.R
 \name{get.table}
 \alias{get.table}
-\title{Get the contents of a Flourish table}
+\title{Return the contents of a Flourish table as a data.frame}
 \usage{
 get.table(table.name, include.deleted = FALSE, where = "")
 }
@@ -17,7 +17,7 @@ get.table(table.name, include.deleted = FALSE, where = "")
 A data.frame containing the requested table
 }
 \description{
-Get the contents of a Flourish table
+Return the contents of a Flourish table as a data.frame
 }
 \examples{
 get.table("sa_employment") # return the employment table as a data.frame

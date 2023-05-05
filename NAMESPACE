@@ -3,3 +3,5 @@
 export(flourish.connection)
 export(get.table)
 export(get.table.names)
+importFrom(dplyr,"%>%")
+importFrom(dplyr,filter)
