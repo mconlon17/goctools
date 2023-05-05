@@ -1,6 +1,8 @@
 #' Establish a database connection to Flourish
 #'
 #' @return a database connection
+#' 
+#' @export
 flourish.connection <- function() {
   dbConnect(RMySQL::MySQL(),
     dbname = key_get("Flourish GOC production dbname"),

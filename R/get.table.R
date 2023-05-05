@@ -9,6 +9,7 @@
 #' @examples
 #' get.table("sa_employment") # return the employment table as a data.frame
 #' 
+#' @export
 get.table <- function(table.name, include.deleted = FALSE, where="") {
     
     con <- flourish.connection()
