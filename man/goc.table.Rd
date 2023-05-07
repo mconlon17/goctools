@@ -4,10 +4,12 @@
 \alias{goc.table}
 \title{Prettify display of a data.frame}
 \usage{
-goc.table(df, caption = "")
+goc.table(df, heading = "", caption = "")
 }
 \arguments{
 \item{df}{the data.frame to be prettified}
+
+\item{heading}{an optional heading to display at the top of the display}
 
 \item{caption}{an optional caption to display at the top of the display}
 }
@@ -15,8 +17,8 @@ goc.table(df, caption = "")
 a flextable
 }
 \description{
-Given a data.frame and an optional caption, display the data.frame as a table suitable for printing, web dislay, or saving. Use \code{set_flextable_defaults} to control look and feel
+Given a data.frame and an optional caption, display the data.frame as a table suitable for printing, web display, or saving. Use \code{set_flextable_defaults} to control look and feel
 }
 \examples{
-goc.table(get.table('users'), 'User accounts on GOC Flourish')
+goc.table(get.table("users"), "User accounts on GOC Flourish")
 }
