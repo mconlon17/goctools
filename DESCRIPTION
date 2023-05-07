@@ -11,7 +11,8 @@ Imports:
     RMySQL,
     DBI,
     dplyr,
-    keyring
+    keyring,
+    flextable
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
