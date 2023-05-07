@@ -2,13 +2,12 @@
 % Please edit documentation in R/goc.table.R
 \name{goc.table}
 \alias{goc.table}
-\title{Prettify display of a data.frame
-Use \code{set_flextable_defaults} to control look and feel}
+\title{Prettify display of a data.frame}
 \usage{
-goc.table(tab, caption = "")
+goc.table(df, caption = "")
 }
 \arguments{
-\item{tab}{the data.frame to be prettified}
+\item{df}{the data.frame to be prettified}
 
 \item{caption}{an optional caption to display at the top of the display}
 }
@@ -16,8 +15,7 @@ goc.table(tab, caption = "")
 a flextable
 }
 \description{
-Prettify display of a data.frame
-Use \code{set_flextable_defaults} to control look and feel
+Given a data.frame and an optional caption, display the data.frame as a table suitable for printing, web dislay, or saving. Use \code{set_flextable_defaults} to control look and feel
 }
 \examples{
 goc.table(get.table('users'), 'User accounts on GOC Flourish')
