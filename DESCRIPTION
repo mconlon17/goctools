@@ -11,6 +11,7 @@ Imports:
     RMySQL,
     DBI,
     dplyr,
+    lubridate,
     keyring,
     flextable,
     officer
