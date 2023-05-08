@@ -1,3 +1,5 @@
+# goctools 0.2.0
+
 # goctools 0.1.0
 
 * No errors, warnings, notes
