@@ -1,3 +1,7 @@
+# goctools 0.3.0
+
+All helper functions are included
+
 # goctools 0.2.0
 
 * All data getter functions are included
