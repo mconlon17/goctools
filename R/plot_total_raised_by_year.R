@@ -28,7 +28,7 @@ plot_total_raised_by_year <- function(date=Sys.Date()) {
     
     end_date <- lubridate::floor_date(date, "year") - lubridate::days(1)
     
-    gifts <- get.gifts() %>%
+    gifts <- get_gifts() %>%
         dplyr::filter(flo_gift_date <= end_date) %>%
         dplyr::mutate(Year = year(as_date(flo_gift_date))) %>%
         dplyr::group_by(Year) %>%
