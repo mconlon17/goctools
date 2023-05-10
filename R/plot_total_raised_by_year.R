@@ -36,7 +36,7 @@ plot_total_raised_by_year <- function(date=Sys.Date()) {
         dplyr::summarise(`Yearly Total` = sum(flo_gift_amount))
     
     ggplot2::ggplot(gifts, ggplot2::aes(Year, weight = `Yearly Total`)) +
-        ggplot2::geom_bar(fill = "#79B956") +
+        ggplot2::geom_bar(fill = "green") +
         ggplot2::ggtitle("Total Dollars Raised by Calendar Year") +
         ggplot2::scale_y_continuous(name="Total Dollars Raised", breaks=seq(25000, 75000, by=25000), 
                            labels=c("$25,000", "$50,000", "$75,000")) +
