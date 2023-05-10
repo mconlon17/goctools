@@ -1,4 +1,4 @@
-#' Plot total raised by calendar year
+#' Plot gifts by calendar year
 #'
 #' @param date Show gifts up to to the end of the year preceding the date
 #' @importFrom lubridate floor_date
@@ -6,7 +6,6 @@
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
 #' @importFrom dplyr group_by
-#' @importFrom dplyr summarise
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 geom_bar
@@ -33,7 +32,7 @@ plot_total_raised_by_year <- function(date=Sys.Date()) {
         dplyr::filter(flo_gift_date <= end_date) %>%
         dplyr::mutate(Year = year(as_date(flo_gift_date))) %>%
         dplyr::group_by(Year) %>%
-        dplyr::summarise(`Yearly Total` = sum(flo_gift_amount))
+        dplyr::tally()
     
     ggplot2::ggplot(gifts, ggplot2::aes(Year, weight = `Yearly Total`)) +
         ggplot2::geom_bar(fill = "#79B956") +
