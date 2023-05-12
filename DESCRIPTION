@@ -8,16 +8,17 @@ Description: Database access, dashboard widgets, reports, plots, and utilities f
 License:
     GPL-3 + file LICENSE
 Imports:
-    RMySQL,
     DBI,
     dplyr,
-    lubridate,
-    keyring,
     flextable,
-    officer,
     ggplot2,
+    keyring,
+    lubridate,
+    officer,
+    RMySQL,
     shiny,
-    stringdist
+    stringdist,
+    stringr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
