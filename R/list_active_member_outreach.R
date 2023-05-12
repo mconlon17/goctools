@@ -7,6 +7,7 @@
 #' @importFrom dplyr summarise
 #' @importFrom dplyr ungroup
 #' @importFrom dplyr arrange
+#' @importFrom dplyr select
 #' 
 #' @return a flextable showing active members with phone and email who haven't been seen in more than a day
 #' @export
