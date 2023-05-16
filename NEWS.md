@@ -1,3 +1,7 @@
+# goctools 0.5.0
+
+* 51 functions. About 35 to go. Half the "check" functions have been added.  Some functions are being combined, some are being parameterized to return specific results, some are being separated into more than one function.
+
 # goctools 0.4.0
 
 * 31 functions. All previously existing functions in the dashboard are now included.  
