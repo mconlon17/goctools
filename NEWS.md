@@ -1,3 +1,21 @@
+# goctools 0.6.0
+
+* 58 functions. About 28 to be added in future versions.
+* All check functions added -- most functions have a check parameter. Values shown below. 61 checks in all.
+
+    * `check_attendance` attendee, date, time_in, time_out, times, location
+    * `check_contacts` phone, email, street, state, nl, full_name, zip, or solicit
+    * `check_employment` member, employer, start, support, pay, or hours		
+    * `check_outreach` member, date, type, or outcome
+    * `check_gifts` donor, restriction, anonymous, amount, campaign, date, method, restricted, or thank_you		
+    * `check_progress_notes` staff, member, goal, text
+    * `check_duplicate_contacts`	
+    * `check_goals` staff, member, text, lapsed_table, and lapsed_list
+    * `check_supports` staff, member, date, duration, type, durations
+    * `check_duplicate_members`
+    * `check_members`	contacts, emergency, benefits, demographics, housing, education, employment, medical, referral, admin, and attendance
+    * `check_users`
+
 # goctools 0.5.0
 
 * 51 functions. About 35 to go. Half the "check" functions have been added.  Some functions are being combined, some are being parameterized to return specific results, some are being separated into more than one function.
