@@ -1,3 +1,10 @@
+# goctools 0.7.0
+
+* 67 functions. About 21 to be added in future versions
+* News series: `dict_` functions to emulate python dict() objects.  Used to translate from internal database key values to external display values.  Will be built out in future work:
+    * `dict_campaign_names` Names of gift campaigns
+    * `dict_table_names` Names of Flourish tables, from internal to external.  Formerly `get_table_names`
+
 # goctools 0.6.0
 
 * 58 functions. About 28 to be added in future versions.
