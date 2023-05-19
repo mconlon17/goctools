@@ -4,9 +4,9 @@
 #' @export
 #'
 #' @examples
-#' get_campaign_names()$key[2] # key value for 2018 Amazing Give
+#' dict_campaign_names()$key[2] # key value for 2018 Amazing Give
 
-get_campaign_names <- function()  {
+dict_campaign_names <- function()  {
     
     d <- c("2017_amazing_give", "2017 Amazing Give",
            "2018_amazing_give", "2018 Amazing Give",
@@ -14,10 +14,12 @@ get_campaign_names <- function()  {
            "2020_amazing_give", "2020 Amazing Give",
            "2020_amazing_give_emergency_relief", "2020 Amazing Give Emergency Relief",
            "2020_end_of_year", "2020 End of Year",
+           "2020_annual_campaign", "2020 Annual Campaign",
            "2021_amazing_give", "2021 Amazing Give",
+           "2021_amazing give", "2021 Amazing Give",
            "2021_annual_campaign", "2021 Annual Campaign",
            "2021_belk", "2021 Belk",
-           "2021_car_wash", "2021 Carwash",
+           "2021_carwash", "2021 Carwash",
            "2021_end_of_year", "2021 End of Year",
            "2021_fall_festival", "2021 Festival",
            "2022_amazing_give", "2022 Amazing Give",
@@ -42,7 +44,7 @@ get_campaign_names <- function()  {
            "2024_bike_day", "2024 Bike Day",
            "2024_carwash", "2024 Car Wash",
            "2024_facebook", "2024 Facebook",
-           "2022_fall_festival", "2024 Fall Festival",
+           "2024_fall_festival", "2024 Fall Festival",
            "2024_ufcc", "2024 UF Campaign for Charities",
            "2024_united_way", "2024 United Way",
            "2024_walgreens", "2024 Walgreens",

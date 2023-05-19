@@ -22,7 +22,7 @@ list_campaign_donors <- function(gift_campaign="2022 Amazing Give") {
     
     campaigns=flo_gift_campaign=contact_2_id=Amount=flo_gift_amount=Donor=contact2_full_name=NULL
     
-    campaigns <- get_campaign_names()
+    campaigns <- dict_campaign_names()
     gift_campaign_key <- campaigns$key[which(campaigns$value == gift_campaign)]
     
     gifts <- get_gifts() %>%
