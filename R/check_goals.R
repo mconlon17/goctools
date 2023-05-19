@@ -1,6 +1,6 @@
 #' Check Goals
 #'
-#' @param check Item to check.  Chices are: staff, member, text, lapsed_table, and lapsed_list
+#' @param check Item to check.  Choices are: staff, member, text, lapsed_table, and lapsed_list
 #' @importFrom dplyr filter
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by

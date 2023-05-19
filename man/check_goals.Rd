@@ -7,7 +7,7 @@
 check_goals(check = "lapsed_list")
 }
 \arguments{
-\item{check}{Item to check.  Chices are: staff, member, text, lapsed_table, and lapsed_list}
+\item{check}{Item to check.  Choices are: staff, member, text, lapsed_table, and lapsed_list}
 }
 \value{
 a flextable with the checks
