@@ -1,3 +1,5 @@
+# goctools 0.8.0
+
 # goctools 0.7.0
 
 * 67 functions. About 21 to be added in future versions
