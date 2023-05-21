@@ -1,10 +1,11 @@
-#' Plot Daily Supports by Type
+#' Plot Supports by Member and Type
 #'
-#' @param date date of plot
-#' @importFrom lubridate days
+#' @param date The date on which the supports should be plotted
+#' 
 #' @importFrom dplyr filter
 #' @importFrom dplyr inner_join
 #' @importFrom dplyr mutate
+#' @importFrom dplyr rename
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 geom_bar
@@ -14,29 +15,30 @@
 #' @importFrom ggplot2 theme_linedraw
 #' @importFrom ggplot2 theme
 #' @importFrom ggplot2 element_text
+#' @importFrom lubridate as_date
 #'
-#' @return a plot showing vertical bars with counts of each support type on the day specified
+#' @return a plot showing the members and for each member, the supports they received as a stacked bar chart
 #' @export
 #'
 #' @examples
-#' plot_daily_supports_by_type() # often blank -- supports have not been entered for the current day
-#' plot_daily_supports_by_type("2023-03-09")
+#' plot_supports_by_member_and_type("2023-03-09")
 
-plot_daily_supports_by_type <- function(date=Sys.Date()-lubridate::days(7)) {
+plot_supports_by_member_and_type <- function(date = Sys.Date()) {
     
-    Type=flo_support_date=value=NULL
+    flo_support_date=Member=last_name=first_name=`Support Type`=value=NULL
     
-    supports <- get_supports(with.members=T) %>%
+    supports <- get_supports(with.members = T) %>%
         dplyr::filter(flo_support_date == date) %>%
-        dplyr::inner_join(get_contacts(), by=c("sa_contacts_2_id"="id")) %>%
-        dplyr::inner_join(dict_support_types(), by=c("flo_support_type"="key")) %>%
-        dplyr::mutate(Type = gsub(" ","\n", value))
+        dplyr::inner_join(dict_support_types(), by = c("flo_support_type" = "key")) %>%
+        dplyr::mutate(Member = paste0(last_name, ",\n", first_name)) %>%
+        dplyr::rename(`Support Type`=value)
     
-    ggplot2::ggplot(supports, ggplot2::aes(Type, fill = Type)) +
-        ggplot2::ggtitle(paste0("Daily Supports by Type for ", format(lubridate::as_date(date), "%B %d, %Y"))) +
-        ggplot2::ylab("Count") +
-        ggplot2::xlab("Support Type") +
+    ggplot(supports, ggplot2::aes(x=Member, fill=`Support Type`)) +
         ggplot2::geom_bar() +
+        ggplot2::ggtitle("Supports by Member and Type", 
+                      subtitle=format(lubridate::as_date(date), "%B %d, %Y")) +
+        ggplot2::ylab("Supports") +
+        ggplot2::xlab("Member") +
         ggplot2::theme_linedraw() +
         ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 32)) +
         ggplot2::theme(plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 11, family="serif", face="italic")) +
