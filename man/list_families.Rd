@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_families.R
 \name{list_families}
 \alias{list_families}
-\title{List Family Contact Info}
+\title{List Family Contact Information}
 \usage{
 list_families()
 }
@@ -10,7 +10,7 @@ list_families()
 a flextable with all families and their contact information
 }
 \description{
-List Family Contact Info
+List Family Contact Information
 }
 \examples{
 list_families()
