@@ -1,3 +1,8 @@
+# goctools 0.9.0
+
+* 88 functions.  About 7 more to be added to get to Version 1.0.0
+* `plot_membership_by_the_numbers` shows 12 plots of GOC data on one page. Displays data from `list_membership_by_the_numbers`
+
 # goctools 0.8.0
 
 * 79 functions.  About 14 to be added in future versions
