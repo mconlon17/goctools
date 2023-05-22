@@ -4,13 +4,21 @@
 \alias{list_membership_by_the_numbers}
 \title{Membership By the Numbers}
 \usage{
-list_membership_by_the_numbers(date = Sys.Date())
+list_membership_by_the_numbers(
+  date = Sys.Date(),
+  months = 15,
+  output = "flextable"
+)
 }
 \arguments{
-\item{date}{Compute a dtable of statistics for 15 months.  The 15th month is defined by date}
+\item{date}{Compute a dtable of statistics for months.  The 15th month is defined by date}
+
+\item{months}{Number of months to incude in the resulting table.  One row per month}
+
+\item{output}{If output="flextable", return a flextable, otherwise return a data.frame}
 }
 \value{
-a flextable with three rows, one for each month, and columns for various statistics of interest to the board of directors
+a flextable or data.frame with one for each month, and columns for various statistics of interest to the board of directors
 }
 \description{
 Membership By the Numbers

@@ -1,6 +1,8 @@
 #' Membership By the Numbers
 #'
-#' @param date Compute a dtable of statistics for 15 months.  The 15th month is defined by date
+#' @param date Compute a dtable of statistics for months.  The 15th month is defined by date
+#' @param months Number of months to incude in the resulting table.  One row per month
+#' @param output If output="flextable", return a flextable, otherwise return a data.frame
 #' 
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
@@ -28,14 +30,14 @@
 #' @importFrom lubridate wday
 #' @importFrom tidyr pivot_wider
 #'
-#' @return a flextable with three rows, one for each month, and columns for various statistics of interest to the board of directors
+#' @return a flextable or data.frame with one for each month, and columns for various statistics of interest to the board of directors
 #' @export
 #'
 #' @examples
 #' list_membership_by_the_numbers()
 #' list_membership_by_the_numbers("2023-01-01")
 
-list_membership_by_the_numbers <- function(date=Sys.Date()) {
+list_membership_by_the_numbers <- function(date=Sys.Date(), months=15, output="flextable") {
     
     start_date=end_date=NULL
     ADA=`Amount Raised`=AvgHrs=ContactID=Donors=Employment_IE=NULL
@@ -45,7 +47,7 @@ list_membership_by_the_numbers <- function(date=Sys.Date()) {
     flo_gift_amount=flo_gift_date=flo_support_date=flo_support_type=NULL
     flo_supports_contactscontacts_idb=id=month_start=NULL
     
-    start_date <- lubridate::floor_date(lubridate::as_date(date) -lubridate::dmonths(15), "month")
+    start_date <- lubridate::floor_date(lubridate::as_date(date) -lubridate::dmonths(months), "month")
     end_date <- lubridate::ceiling_date(lubridate::as_date(date), "month") -lubridate::ddays(1)
     
     ndays <- as.integer(lubridate::as_date(Sys.Date()) - lubridate::as_date(start_date)) + 1
@@ -131,16 +133,26 @@ list_membership_by_the_numbers <- function(date=Sys.Date()) {
                `Pre-employment Supports`=Employment_readiness, `TE Supports`=Employment_TE,
                `SE Supports`=Employment_SE, `IE Supports`=Employment_IE, Donors, `Amount Raised`)
 
-    ft <- goc_table(board.report, "Membership by the Numbers", 
-                    caption=paste0("For the period ", start_date, " to ", end_date)) %>%
-        flextable::width(j=1, width=1.1) %>%
-        flextable::width(j=seq(2,13),width=0.75) %>%
-        flextable::add_header_row(colwidths=c(1,4,6,2),values=c("Month", "Attendance", "Supports", "Development")) %>%
-        flextable::merge_at(i = seq(1,2), j = 1, part = "header") %>%
-        flextable::set_formatter_type(fmt_double = "%.01f") %>%
-        flextable::set_formatter_type(fmt_date = "%B, %Y") %>%
-        flextable::colformat_num(j=13, prefix="$") %>%
-        goc_theme() %>%
-        flextable::align(align="center", part="header")
+    if (output == "flextable") {
+        
+        ft <- goc_table(board.report, "Membership by the Numbers", 
+                        caption=paste0("For the period ", start_date, " to ", end_date)) %>%
+            flextable::width(j=1, width=1.1) %>%
+            flextable::width(j=seq(2,13),width=0.75) %>%
+            flextable::add_header_row(colwidths=c(1,4,6,2),values=c("Month", "Attendance", "Supports", "Development")) %>%
+            flextable::merge_at(i = seq(1,2), j = 1, part = "header") %>%
+            flextable::set_formatter_type(fmt_double = "%.01f") %>%
+            flextable::set_formatter_type(fmt_date = "%B, %Y") %>%
+            flextable::colformat_num(j=13, prefix="$") %>%
+            goc_theme() %>%
+            flextable::align(align="center", part="header")
+        
+    } else {
+        
+        ft <- as.data.frame(board.report)
+        
+    }
+    
     ft
+    
 }

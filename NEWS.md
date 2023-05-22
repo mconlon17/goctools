@@ -1,9 +1,13 @@
 # goctools 0.8.0
 
+* 79 functions.  About 14 to be added in future versions
+* `dict_city_county` added to lookup counties for cities
+* `dict_support_types` added to translate Flourish dropdown for support types
+
 # goctools 0.7.0
 
 * 67 functions. About 21 to be added in future versions
-* News series: `dict_` functions to emulate python dict() objects.  Used to translate from internal database key values to external display values.  Will be built out in future work:
+* New series: `dict_` functions to emulate python dict() objects.  Used to translate from internal database key values to external display values.  Will be built out in future work:
     * `dict_campaign_names` Names of gift campaigns
     * `dict_table_names` Names of Flourish tables, from internal to external.  Formerly `get_table_names`
 

@@ -15,6 +15,7 @@ Imports:
     keyring,
     lubridate,
     officer,
+    patchwork,
     RMySQL,
     shiny,
     stringdist,
