@@ -12,9 +12,9 @@
 #' @export
 #'
 #' @examples
-#' current_employment()
+#' list_current_employment()
 
-current_employment <- function() {
+list_current_employment <- function() {
 
     flo_emp_date_end=flo_emp_job_type=Member=NULL
     `GOC Support`=`Job Title` = flo_emp_job_title=Employer = contact2_full_name=NULL 
@@ -34,7 +34,7 @@ current_employment <- function() {
                `Hourly Pay` = flo_emp_approximate_hourly_pay, `Hours/Week` = flo_emp_approximate_hours_wk) %>%
         dplyr::arrange(desc(`GOC Support`), Member)
     
-    ft <- goc_table(emp, paste0(nrow(emp), " Members employed")) %>%
+    ft <- goc_table(emp, paste0(nrow(emp), " Members employed"), caption=Sys.Date()) %>%
         colformat_num(j = "Hourly Pay", big.mark = ",", prefix = "$")
     ft
 }
