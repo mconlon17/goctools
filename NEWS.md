@@ -1,3 +1,7 @@
+# goctools 1.0.0
+
+* 96 functions.  This completes the planned collection and revision of all existing GOC R software
+
 # goctools 0.9.0
 
 * 88 functions.  About 7 more to be added to get to Version 1.0.0
