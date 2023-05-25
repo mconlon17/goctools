@@ -8,7 +8,6 @@
 #' @examples
 #' emp <- get_employment()
 #' goc_table(emp, "Employment", paste0(nrow(emp), " records as of ", Sys.Date()))
-
 get_employment <- function(include.deleted = FALSE) {
-    get_table("sa_employment", include.deleted)
+  get_table("sa_employment", include.deleted)
 }

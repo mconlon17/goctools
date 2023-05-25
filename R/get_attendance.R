@@ -9,12 +9,12 @@
 #' @examples
 #' nrow(get_attendance()) # number of non-deleted attendance records all time
 #' get_attendance() # get all non-deleted attendance records as a data.frame
-#' get_attendance(days=90) # attendance over the previous 90 days from today.
-get_attendance <- function(include.deleted = FALSE, days=Inf) {
-    if (days == Inf) {
-        get_table("sa_flourish_daily_attendance", include.deleted)
-    } else {
-        where <- paste0(" WHERE da_date_of_attendance >= DATE_SUB(NOW(), INTERVAL ",days," DAY);")
-        get_table("sa_flourish_daily_attendance", include.deleted, where=where)
-    }
+#' get_attendance(days = 90) # attendance over the previous 90 days from today.
+get_attendance <- function(include.deleted = FALSE, days = Inf) {
+  if (days == Inf) {
+    get_table("sa_flourish_daily_attendance", include.deleted)
+  } else {
+    where <- paste0(" WHERE da_date_of_attendance >= DATE_SUB(NOW(), INTERVAL ", days, " DAY);")
+    get_table("sa_flourish_daily_attendance", include.deleted, where = where)
+  }
 }

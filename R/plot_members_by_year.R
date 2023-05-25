@@ -10,13 +10,12 @@
 #'
 #' @examples
 #' plot_members_by_year()
-
 plot_members_by_year <- function() {
-    
-    Year=`Number of Members`=NULL
-    
-    goc_plot(ggplot2::ggplot(list_members_by_year(output="data.frame"), ggplot2::aes(Year, `Number of Members`)) +
-        ggplot2::ggtitle("Members by Year") +
-        ggplot2::geom_line())
-    
+  Year <- `Number of Members` <- NULL
+
+  goc_plot(
+    goc_plot(ggplot2::ggplot(list_members_by_year(output = "data.frame"), ggplot2::aes(Year, `Number of Members`)) +
+      ggplot2::ggtitle("Members by Year", subtitle = " ") +
+      ggplot2::geom_line())
+  )
 }

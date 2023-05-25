@@ -13,16 +13,15 @@
 #' int1 <- lubridate::interval(lubridate::ymd("2023-04-01"), lubridate::ymd("2023-04-10"))
 #' int2 <- lubridate::interval(lubridate::ymd("2023-04-03"), lubridate::ymd("2023-04-24"))
 #' int3 <- make_intersection(int1, int2) # from 3 to 10
-
-make_intersection <- function(int1,int2){
-    if (lubridate::int_start(int1) > lubridate::int_end(int2)) {
-        NA
-    }
-    else if (lubridate::int_start(int2) > lubridate::int_end(int1)) {
-        NA
-    }
-    else {
-        max(lubridate::int_start(int1),lubridate::int_start(int2)) %--% min(lubridate::int_end(int1),
-                                                                            lubridate::int_end(int2))
-    }
+make_intersection <- function(int1, int2) {
+  if (lubridate::int_start(int1) > lubridate::int_end(int2)) {
+    NA
+  } else if (lubridate::int_start(int2) > lubridate::int_end(int1)) {
+    NA
+  } else {
+    max(lubridate::int_start(int1), lubridate::int_start(int2)) %--% min(
+      lubridate::int_end(int1),
+      lubridate::int_end(int2)
+    )
+  }
 }

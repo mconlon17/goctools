@@ -24,34 +24,33 @@
 #'
 #' @examples
 #' plot_top_10_campaigns_by_gifts()
-   
 plot_top_10_campaigns_by_gifts <- function() {
-    
-    Campaign=flo_gift_campaign=n=ymax=ymin=NULL
-    
-    gifts <- get_gifts() %>%
-        dplyr::group_by(flo_gift_campaign) %>%
-        dplyr::tally() %>%
-        dplyr::slice_max(n, n=10) %>%
-        dplyr::rename(Campaign = flo_gift_campaign)
-    
-    dat <- gifts
-    dat$fraction = dat$n / sum(dat$n)
-    dat = dat[order(dat$fraction), ]
-    dat$ymax = cumsum(dat$fraction)
-    dat$ymin = c(0, utils::head(dat$ymax, n=-1))
-    
-    ggplot2::ggplot(dat, ggplot2::aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill = stats::reorder(Campaign,1/n))) +
-        ggplot2::geom_rect(colour="grey30") +
-        ggplot2::coord_polar(theta = "y") +
-        ggplot2::theme_bw() +
-        ggplot2::xlim(c(0,4)) +
-        ggplot2::scale_fill_discrete(name = "Campaign") +
-        ggplot2::theme(axis.ticks=element_blank()) +
-        ggplot2::theme(axis.text=element_blank()) +
-        ggplot2::theme(panel.grid=element_blank()) +
-        ggplot2::ggtitle("Top 10 Campaigns by Number of Gifts") + 
-        ggplot2::xlab("") + 
-        ggplot2::ylab("") + 
-        ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, family = "sans", size = 32))
+  Campaign <- flo_gift_campaign <- n <- ymax <- ymin <- NULL
+
+  gifts <- get_gifts() %>%
+    dplyr::group_by(flo_gift_campaign) %>%
+    dplyr::tally() %>%
+    dplyr::slice_max(n, n = 10) %>%
+    dplyr::rename(Campaign = flo_gift_campaign)
+
+  dat <- gifts
+  dat$fraction <- dat$n / sum(dat$n)
+  dat <- dat[order(dat$fraction), ]
+  dat$ymax <- cumsum(dat$fraction)
+  dat$ymin <- c(0, utils::head(dat$ymax, n = -1))
+
+  goc_plot(
+    ggplot2::ggplot(dat, ggplot2::aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = stats::reorder(Campaign, 1 / n))) +
+      ggplot2::geom_rect(colour = "grey30") +
+      ggplot2::coord_polar(theta = "y") +
+      ggplot2::theme_bw() +
+      ggplot2::xlim(c(0, 4)) +
+      ggplot2::scale_fill_discrete(name = "Campaign") +
+      ggplot2::theme(axis.ticks = element_blank()) +
+      ggplot2::theme(axis.text = element_blank()) +
+      ggplot2::theme(panel.grid = element_blank()) +
+      ggplot2::ggtitle("Top 10 Campaigns by Number of Gifts", subtitle = "") +
+      ggplot2::xlab("") +
+      ggplot2::ylab("")
+  )
 }

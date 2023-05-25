@@ -1,5 +1,5 @@
 #' List Members By City
-#' 
+#'
 #' @importFrom dplyr group_by
 #' @importFrom dplyr tally
 #' @importFrom dplyr full_join
@@ -10,17 +10,15 @@
 #'
 #' @examples
 #' list_members_by_city()
-
 list_members_by_city <- function() {
-    
-    n=primary_address_city=value=NULL
-    
-    members <- get_members() %>%
-        dplyr::group_by(primary_address_city) %>%
-        dplyr::tally() %>%
-        dplyr::full_join(dict_city_county(), by=c("primary_address_city"="key")) %>%
-        dplyr::select(City=primary_address_city, n, County=value)
-    
-    ft <- goc_table(members, "Members By City")
-    ft
+  n <- primary_address_city <- value <- NULL
+
+  members <- get_members() %>%
+    dplyr::group_by(primary_address_city) %>%
+    dplyr::tally() %>%
+    dplyr::full_join(dict_city_county(), by = c("primary_address_city" = "key")) %>%
+    dplyr::select(City = primary_address_city, n, County = value)
+
+  ft <- goc_table(members, "Members By City")
+  ft
 }

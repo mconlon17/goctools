@@ -15,23 +15,30 @@
 #' @importFrom flextable fp_text_default
 #' @return a prettified flextable
 #' @export
-#' 
+#'
 #' @examples
 #' goc_table(get_table("users"), "User accounts on GOC Flourish")
-
-goc_table <- function(df, heading="", caption="") {
-  ft <- flextable::flextable(df, theme_fun=goc_theme) %>%
+goc_table <- function(df, heading = "", caption = "") {
+  ft <- flextable::flextable(df, theme_fun = goc_theme) %>%
     flextable::autofit() %>%
     flextable::colformat_num(big.mark = "") %>%
     flextable::set_caption(
-        flextable::as_paragraph(
-            flextable::as_chunk(heading, 
-                                props=flextable::fp_text_default(font.family="Helvetica", 
-                                                    font.size=32)),
-            flextable::as_chunk("\n \n", font.size=16),
-            flextable::as_chunk(caption, 
-                                props=flextable::fp_text_default(font.family="Times", 
-                                                    font.size=11, 
-                                                    italic=T, ))))
+      flextable::as_paragraph(
+        flextable::as_chunk(heading,
+          props = flextable::fp_text_default(
+            font.family = "Helvetica",
+            font.size = 32
+          )
+        ),
+        flextable::as_chunk("\n \n", font.size = 16),
+        flextable::as_chunk(caption,
+          props = flextable::fp_text_default(
+            font.family = "Times",
+            font.size = 11,
+            italic = T,
+          )
+        )
+      )
+    )
   goc_theme(ft)
 }

@@ -28,13 +28,12 @@
 #' @examples
 #' plot_active_members_over_time()
 plot_active_members_over_time <- function(start_date = Sys.Date() - lubridate::years(1)) {
-  
-  MostRecent=Since=c2_groups=contact_2_id=da_date_of_attendance=NULL
-    
+  MostRecent <- Since <- c2_groups <- contact_2_id <- da_date_of_attendance <- NULL
+
   if (lubridate::as_date(start_date) == as_date(Sys.Date())) {
     start_date <- start_date - days(365)
   }
-  
+
   ndays <- as.integer(lubridate::as_date(Sys.Date()) - lubridate::as_date(start_date)) + 1
 
   if (shiny::isRunning()) {
@@ -78,18 +77,14 @@ plot_active_members_over_time <- function(start_date = Sys.Date() - lubridate::y
 
   average <- mean(active$active.members)
 
-  ggplot2::ggplot(active, aes(x = dates, y = active.members)) +
-    ggplot2::geom_line() +
-    ggplot2::geom_hline(color = "blue", yintercept = average) +
-    ggplot2::ggtitle(paste0("Active Members from ", start_date), 
-                     subtitle = paste0("Average Active Members = ", format(average, digits = 3))) +
-    ggplot2::scale_x_date(name = "Years", date_labels = '%b %Y', date_breaks = '3 months') +
-    ggplot2::scale_y_continuous(name = "Active Members", n.breaks=5) +
-    ggplot2::theme_linedraw() +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 32)) +
-    ggplot2::theme(plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 11, family="serif", face="italic")) +
-    ggplot2::theme(axis.title = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                      size = 11, face = "bold")) +
-    ggplot2::theme(axis.text  = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                      size = 11))
+  goc_plot(
+    ggplot2::ggplot(active, aes(x = dates, y = active.members)) +
+      ggplot2::geom_line() +
+      ggplot2::geom_hline(color = "blue", yintercept = average) +
+      ggplot2::ggtitle(paste0("Active Members from ", start_date),
+        subtitle = paste0("Average Active Members = ", format(average, digits = 3))
+      ) +
+      ggplot2::scale_x_date(name = "Years", date_labels = "%b %Y", date_breaks = "3 months") +
+      ggplot2::scale_y_continuous(name = "Active Members", n.breaks = 5)
+  )
 }

@@ -21,27 +21,20 @@
 #' @examples
 #' plot_daily_supports_by_type() # often blank -- supports have not been entered for the current day
 #' plot_daily_supports_by_type("2023-03-09")
+plot_daily_supports_by_type <- function(date = Sys.Date()) {
+  Type <- flo_support_date <- value <- NULL
 
-plot_daily_supports_by_type <- function(date=Sys.Date()-lubridate::days(7)) {
-    
-    Type=flo_support_date=value=NULL
-    
-    supports <- get_supports(with.members=T) %>%
-        dplyr::filter(flo_support_date == date) %>%
-        dplyr::inner_join(get_contacts(), by=c("sa_contacts_2_id"="id")) %>%
-        dplyr::inner_join(dict_support_types(), by=c("flo_support_type"="key")) %>%
-        dplyr::mutate(Type = gsub(" ","\n", value))
-    
+  supports <- get_supports(with.members = T) %>%
+    dplyr::filter(flo_support_date == date) %>%
+    dplyr::inner_join(get_contacts(), by = c("sa_contacts_2_id" = "id")) %>%
+    dplyr::inner_join(dict_support_types(), by = c("flo_support_type" = "key")) %>%
+    dplyr::mutate(Type = gsub(" ", "\n", value))
+
+  goc_plot(
     ggplot2::ggplot(supports, ggplot2::aes(Type, fill = Type)) +
-        ggplot2::ggtitle(paste0("Daily Supports by Type for ", format(lubridate::as_date(date), "%B %d, %Y"))) +
-        ggplot2::ylab("Count") +
-        ggplot2::xlab("Support Type") +
-        ggplot2::geom_bar() +
-        ggplot2::theme_linedraw() +
-        ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 32)) +
-        ggplot2::theme(plot.subtitle = ggplot2::element_text(hjust = 0.5, size = 11, family="serif", face="italic")) +
-        ggplot2::theme(axis.title = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                          size = 11, face = "bold")) +
-        ggplot2::theme(axis.text  = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                          size = 11))
+      ggplot2::ggtitle("Daily Supports by Type", paste0("for ", format(lubridate::as_date(date), "%B %d, %Y"))) +
+      ggplot2::ylab("Count") +
+      ggplot2::xlab("Support Type") +
+      ggplot2::geom_bar()
+  )
 }

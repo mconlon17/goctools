@@ -10,22 +10,19 @@
 #'
 #' @examples
 #' get_supports()
-#' get_supports(with.members=TRUE) # return outer join of members and supports (large data.frame)
+#' get_supports(with.members = TRUE) # return outer join of members and supports (large data.frame)
+get_supports <- function(include.deleted = FALSE, with.members = FALSE, active.only = FALSE) {
+  supports <- get_table("flo_supports", include.deleted)
 
-get_supports <- function(include.deleted = FALSE, with.members=FALSE, active.only=FALSE) {
-    
-    supports <- get_table("flo_supports", include.deleted)
-    
-    if (with.members) {
-        
-        rel <- get_table("flo_supports_contacts_c")
-        
-        members <- get_members(include.deleted, active.only)
-        
-        supports <- supports %>%
-            dplyr::inner_join(rel, by = c("id"="flo_supports_contactsflo_supports_ida")) %>%
-            dplyr::inner_join(members, by=c("flo_supports_contactscontacts_idb"="id"))
-    }
-    
-    supports
+  if (with.members) {
+    rel <- get_table("flo_supports_contacts_c")
+
+    members <- get_members(include.deleted, active.only)
+
+    supports <- supports %>%
+      dplyr::inner_join(rel, by = c("id" = "flo_supports_contactsflo_supports_ida")) %>%
+      dplyr::inner_join(members, by = c("flo_supports_contactscontacts_idb" = "id"))
+  }
+
+  supports
 }

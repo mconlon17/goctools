@@ -8,5 +8,5 @@
 #' @examples
 #' get_goals()
 get_goals <- function(include.deleted = FALSE) {
-    get_table("sa_goals", include.deleted)
+  get_table("sa_goals", include.deleted)
 }
