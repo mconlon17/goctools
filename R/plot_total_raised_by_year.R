@@ -1,8 +1,9 @@
 #' Plot total raised by calendar year
 #'
-#' @param date Show gifts up to to the end of the year preceding the date
 #' @importFrom lubridate floor_date
 #' @importFrom lubridate days
+#' @importFrom lubridate "%within%"
+#' @importFrom lubridate "%--%"
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
 #' @importFrom dplyr group_by
@@ -23,29 +24,26 @@
 #'
 #' @examples
 #' plot_total_raised_by_year()
-plot_total_raised_by_year <- function(date=Sys.Date()) {
+plot_total_raised_by_year <- function() {
     
-    Year=`Yearly Total`=flo_gift_amount=flo_gift_date=NULL
+    Year=`Yearly Total`=flo_gift_amount=flo_gift_date=start_date=NULL
     
-    end_date <- lubridate::floor_date(date, "year") - lubridate::days(1)
+    start_date <- lubridate::as_date("2017-01-01")
+    end_date <- lubridate::floor_date(Sys.Date(), "year") - lubridate::days(1)
     
     gifts <- get_gifts() %>%
-        dplyr::filter(flo_gift_date <= end_date) %>%
+        dplyr::filter(lubridate::as_date(flo_gift_date) %within% (start_date %--% end_date)) %>%
         dplyr::mutate(Year = year(as_date(flo_gift_date))) %>%
         dplyr::group_by(Year) %>%
         dplyr::summarise(`Yearly Total` = sum(flo_gift_amount))
     
-    ggplot2::ggplot(gifts, ggplot2::aes(Year, weight = `Yearly Total`)) +
-        ggplot2::geom_bar(fill = "green") +
-        ggplot2::ggtitle("Total Dollars Raised by Calendar Year") +
-        ggplot2::scale_y_continuous(name="Total Dollars Raised", breaks=seq(25000, 75000, by=25000), 
-                           labels=c("$25,000", "$50,000", "$75,000")) +
-        ggplot2::scale_x_continuous(name="Calendar Year", breaks=seq(min(gifts$Year),max(gifts$Year))) +
-        ggplot2::theme_linedraw() +
-        ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                          size = ggplot2::rel(2.5), face = "bold")) +
-        ggplot2::theme(axis.title = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                          size = ggplot2::rel(1.1), face = "bold")) +
-        ggplot2::theme(axis.text  = ggplot2::element_text(hjust = 0.5, family = "sans", 
-                                                          size = ggplot2::rel(1.2)))
+    goc_plot(
+        ggplot2::ggplot(gifts, ggplot2::aes(Year, weight = `Yearly Total`)) +
+            ggplot2::geom_bar(fill = "green") +
+            ggplot2::ggtitle("Total Dollars Raised by Calendar Year",
+                             subtitle=paste0("from ", start_date, " to ", end_date)) +
+            ggplot2::scale_y_continuous(name="Total Dollars Raised", breaks=seq(25000, 75000, by=25000), 
+                                        labels=c("$25,000", "$50,000", "$75,000")) +
+            ggplot2::scale_x_continuous(name="Calendar Year", breaks=seq(min(gifts$Year),max(gifts$Year)))
+    )
 }
