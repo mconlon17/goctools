@@ -17,7 +17,7 @@
 #' @importFrom ggplot2 element_text
 #' @importFrom lubridate as_date
 #'
-#' @return a plot showing the Staffs and for each Staff, the supports they received as a stacked bar chart
+#' @return a plot showing the Staff members and for each Staff member, the supports they authored as a stacked bar chart
 #' @export
 #'
 #' @examples

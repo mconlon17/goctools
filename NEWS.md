@@ -1,3 +1,12 @@
+# goctools 1.1.0
+
+* 97 functions
+* `list_gifts` added
+* Improvements to `list_supported_employment_billing`. Footnotes describe columns.  Referrals omitted.
+* Cosmetic improvements to `list_membership_by_the_numbers` and `plot_membership_by_the_numbers`
+* Minor improvements to other functions to support Flourish changes: `list_staff_progress_notes`, `list_staff_time`, `list_supports_by_member_and_type`,
+`plot_gifts_by_year`, `plot_supports_by_staff_and_type` 
+
 # goctools 1.0.0
 
 * 96 functions.  This completes the planned collection and revision of all existing GOC R software

@@ -20,5 +20,5 @@ Get attendance data from Flourish
 \examples{
 nrow(get_attendance()) # number of non-deleted attendance records all time
 get_attendance() # get all non-deleted attendance records as a data.frame
-get_attendance(days=90) # attendance over the previous 90 days from today.
+get_attendance(days = 90) # attendance over the previous 90 days from today.
 }

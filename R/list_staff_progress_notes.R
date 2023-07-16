@@ -23,10 +23,10 @@
 #' list_staff_progress_notes()
 #' list_staff_progress_notes(date = "2023-04-05", interval = "month") # progress notes for April
 list_staff_progress_notes <- function(date = Sys.Date(), interval = "month") {
+  
   start_date <- end_date <- `Note Date` <- NULL
   Member <- PNDate <- Staff <- c2_groups <- contact_2_id <- contact_id <- date_modified <- NULL
   first_name <- flo_date_of_note <- last_name <- progress_note <- Note <- NULL
-
 
   date <- lubridate::as_date(date)
 

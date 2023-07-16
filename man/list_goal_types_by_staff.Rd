@@ -19,5 +19,5 @@ List Goal Types by Staff
 }
 \examples{
 list_goal_types_by_staff()
-list_goal_types_by_staff(date="2023-01-01", unit="week")
+list_goal_types_by_staff(date = "2023-01-01", unit = "week")
 }

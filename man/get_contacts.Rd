@@ -19,6 +19,6 @@ Get contact data from Flourish
 }
 \examples{
 get_contacts()
-contacts <- get_contacts(include.email=TRUE)
-nrow(contacts[!is.na(contacts$email_address),]) # count records with email
+contacts <- get_contacts(include.email = TRUE)
+nrow(contacts[!is.na(contacts$email_address), ]) # count records with email
 }

@@ -18,6 +18,6 @@ identical,
 1 indicates a single character edit (addition, deletion, or change) will make two full names identical.
 }
 \examples{
-check_duplicate_contacts() 
+check_duplicate_contacts()
 check_duplicate_contacts(4) # relax the closeness for a longer list
 }

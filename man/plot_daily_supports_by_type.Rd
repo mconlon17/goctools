@@ -4,7 +4,7 @@
 \alias{plot_daily_supports_by_type}
 \title{Plot Daily Supports by Type}
 \usage{
-plot_daily_supports_by_type(date = Sys.Date() - lubridate::days(7))
+plot_daily_supports_by_type(date = Sys.Date())
 }
 \arguments{
 \item{date}{date of plot}

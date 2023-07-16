@@ -29,8 +29,8 @@ plot_membership_by_the_numbers <- function(date = Sys.Date(), months = 15) {
       ggplot2::theme_linedraw()
   }
 
-  start_date <- lubridate::floor_date(lubridate::as_date(date) - lubridate::dmonths(months), "month")
-  end_date <- lubridate::ceiling_date(lubridate::as_date(date), "month") - lubridate::ddays(1)
+  start_date <- lubridate::ceiling_date(lubridate::as_date(date) - lubridate::dmonths(months + 1), "month")
+  end_date <- lubridate::floor_date(lubridate::as_date(date), "month") - lubridate::ddays(1)
 
   data <- list_membership_by_the_numbers(date, months = months, output = "data.frame")
 

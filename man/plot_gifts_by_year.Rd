@@ -4,10 +4,7 @@
 \alias{plot_gifts_by_year}
 \title{Plot gifts by calendar year}
 \usage{
-plot_gifts_by_year(date = Sys.Date())
-}
-\arguments{
-\item{date}{Show gifts up to to the end of the year preceding the date}
+plot_gifts_by_year()
 }
 \value{
 a plot showing total raised each year in vertical bars

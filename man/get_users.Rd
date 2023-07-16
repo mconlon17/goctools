@@ -17,7 +17,7 @@ Get users table from Flourish
 }
 \examples{
 get_users() # return all non-deleted records
-get_users(include.deleted=TRUE) # return all records, including deleted
-get_users()[,c("id","date_entered")] # return named columns for non-deleted records
+get_users(include.deleted = TRUE) # return all records, including deleted
+get_users()[, c("id", "date_entered")] # return named columns for non-deleted records
 colnames(get_users()) # return the column names of the users table
 }

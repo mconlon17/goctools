@@ -11,11 +11,12 @@ list_membership_by_the_numbers(
 )
 }
 \arguments{
-\item{date}{Compute a dtable of statistics for months.  The 15th month is defined by date}
+\item{date}{Compute a table of statistics for months.  The 15th month is defined by date}
 
-\item{months}{Number of months to incude in the resulting table.  One row per month}
+\item{months}{Number of months to include in the resulting table.  One row per month}
 
-\item{output}{If output="flextable", return a flextable, otherwise return a data.frame}
+\item{output}{If output="flextable", return a flextable, otherwise return a data.frame. The data.frame can be
+used as input to plot_membership_by_the_numbers}
 }
 \value{
 a flextable or data.frame with one for each month, and columns for various statistics of interest to the board of directors

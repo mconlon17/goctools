@@ -21,5 +21,5 @@ Produce a table a member information
 \examples{
 check_members()
 check_members("demographics")
-check_members("housing",FALSE)
+check_members("housing", FALSE)
 }

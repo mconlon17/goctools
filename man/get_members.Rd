@@ -20,5 +20,5 @@ Get member data from Flourish
 }
 \examples{
 get_members()
-get_members(active.only=TRUE)
+get_members(active.only = TRUE)
 }

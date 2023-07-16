@@ -17,5 +17,5 @@ Get progress notes from Flourish
 }
 \examples{
 get_progress_notes() # get non-deleted progress notes
-get_progress_notes(include.deleted=TRUE) # get all progress notes, including deleted
+get_progress_notes(include.deleted = TRUE) # get all progress notes, including deleted
 }

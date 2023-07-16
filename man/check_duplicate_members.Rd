@@ -18,6 +18,6 @@ identical,
 1 indicates a single character edit (addition, deletion, or change) will make two names identical.
 }
 \examples{
-check_duplicate_members() 
+check_duplicate_members()
 check_duplicate_members(4) # relax the closeness for a longer list
 }

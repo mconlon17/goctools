@@ -1,10 +1,9 @@
 #' Plot gifts by calendar year
 #'
-#' @param date Show gifts up to to the end of the year preceding the date
 #' @importFrom lubridate floor_date
 #' @importFrom lubridate days
 #' @importFrom lubridate as_date
-#' @importFrom lubridate "within%"
+#' @importFrom lubridate "%within%"
 #' @importFrom lubridate "%--%"
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate

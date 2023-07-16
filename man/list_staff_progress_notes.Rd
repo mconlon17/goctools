@@ -19,5 +19,5 @@ Staff Progress Notes
 }
 \examples{
 list_staff_progress_notes()
-list_staff_progress_notes(date="2023-04-05", interval="month") # progress notes for April
+list_staff_progress_notes(date = "2023-04-05", interval = "month") # progress notes for April
 }

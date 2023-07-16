@@ -15,6 +15,10 @@
 #' @importFrom lubridate ceiling_date
 #' @importFrom lubridate %within%
 #' @importFrom lubridate %--%
+#' @importFrom flextable footnote
+#' @importFrom flextable as_paragraph
+#' @importFrom flextable as_chunk
+#' @importFrom flextable fp_text_default
 #'
 #' @return a flextable containing the data required to prepare grant billing for supported employment
 #' @export
@@ -23,6 +27,7 @@
 #' list_supported_employment_billing()
 #' list_supported_employment_billing("2023-04-05")
 list_supported_employment_billing <- function(date = Sys.Date()) {
+  
   Benefits <- DischargeDate <- EmploymentPlanUpdate <- LastVisit <- NULL
   MostRecentSupport <- Pre <- RecentAssess <- SES <- contact2_full_name <- NULL
   contact_2_id <- contact_flourish_number <- contact_id <- contact_id_c <- NULL
@@ -30,7 +35,7 @@ list_supported_employment_billing <- function(date = Sys.Date()) {
   flo_emp_approximate_hourly_pay <- flo_emp_approximate_hours_wk <- NULL
   flo_emp_date_end <- flo_emp_date_start <- flo_emp_job_title <- flo_food_stamps <- NULL
   flo_goal_end_date <- flo_goal_type <- flo_housing_voucher <- flo_ssdi <- flo_ssi <- NULL
-  flo_support_date <- flo_support_type <- NULL
+  flo_support_date <- flo_support_type <- flo_membership_status_c <- NULL
   flo_supports_contactsflo_supports_ida <- id <- last_name <- sa_contacts_2_id <- NULL
 
   date <- lubridate::as_date(date)
@@ -41,6 +46,7 @@ list_supported_employment_billing <- function(date = Sys.Date()) {
   members <- get_members() %>%
     dplyr::mutate(Benefits = ifelse(flo_ssi == "yes" | flo_ssdi == "yes" |
       flo_food_stamps == "yes" | flo_housing_voucher == "yes", "Yes", "No")) %>%
+    dplyr::filter(flo_membership_status_c != "Referral") %>%
     dplyr::select(id, contact_flourish_number, contact_id_c, last_name, first_name, Benefits)
 
   attendance <- get_attendance(days = ndays) %>%
@@ -141,6 +147,19 @@ list_supported_employment_billing <- function(date = Sys.Date()) {
       -contact_id_c
     )
 
-  ft <- goc_table(members, paste0(nrow(members), " Attending Members in ", format(date, "%B, %Y")))
+  ft <- goc_table(members, paste0(nrow(members), " Attending Members in ", format(date, "%B, %Y"))) %>%
+    flextable::footnote(i=1,j=c(1,3,6,8,11,13),part="header",ref_symbols = seq(1,6),
+                        value=flextable::as_paragraph(flextable::as_chunk(c(
+                          "All wording on this report is LSF contract wording.  This report does not use Clubhouse wording.", 
+                          paste0("All persons in the GOC Flourish Member database that attended the GOC during ", format(date, "%B, %Y"), 
+                                 " are included on this report, except those with status Referral, as per LSF contract requirements"),
+                          "If member is receiving any of SSI, SSDI, Food Stamps or a housing voucher, this column is Yes",
+                          "Most recent employment support date",
+                          "Date from employment record",
+                          "Most recent employment goal update"
+                          ),props = flextable::fp_text_default(
+                            font.family = "Times", italic=TRUE,
+                            font.size = 10
+                          ))))
   ft
 }

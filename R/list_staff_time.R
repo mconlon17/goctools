@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' list_staff_time(name = "Reynolds, Keisha", start_date = "2022-01-01") # empty report. Fictional name.
+#' list_staff_time(name = "Reynolds, Keisha", start_date = "2022-01-01") # Fictional name
 list_staff_time <- function(name, start_date) {
   Day <- Name <- `Time In` <- `Time Out` <- c2_groups <- da_date_of_attendance <- da_time_in <- NULL
   da_time_out <- first_name <- id <- last_name <- NULL

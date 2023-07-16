@@ -19,5 +19,5 @@ List New Members
 }
 \examples{
 list_new_members()
-list_new_members("2023-05-22", ndays=30)
+list_new_members("2023-05-22", ndays = 30)
 }

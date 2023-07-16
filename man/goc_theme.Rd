@@ -16,5 +16,5 @@ x the table that was entered, with styling
 Used in \code{goc_table} to produce attractive, standard tables
 }
 \examples{
-goc_theme(flextable::flextable(data.frame(x=seq(1,5),y=runif(5))))
+goc_theme(flextable::flextable(data.frame(x = seq(1, 5), y = runif(5))))
 }

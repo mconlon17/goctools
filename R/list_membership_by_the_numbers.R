@@ -1,8 +1,9 @@
 #' Membership By the Numbers
 #'
-#' @param date Compute a dtable of statistics for months.  The 15th month is defined by date
-#' @param months Number of months to incude in the resulting table.  One row per month
-#' @param output If output="flextable", return a flextable, otherwise return a data.frame
+#' @param date Compute a table of statistics for months.  The 15th month is defined by date
+#' @param months Number of months to include in the resulting table.  One row per month
+#' @param output If output="flextable", return a flextable, otherwise return a data.frame. The data.frame can be
+#' used as input to plot_membership_by_the_numbers
 #'
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
@@ -45,8 +46,8 @@ list_membership_by_the_numbers <- function(date = Sys.Date(), months = 15, outpu
   flo_gift_amount <- flo_gift_date <- flo_support_date <- flo_support_type <- NULL
   flo_supports_contactscontacts_idb <- id <- month_start <- NULL
 
-  start_date <- lubridate::floor_date(lubridate::as_date(date) - lubridate::dmonths(months), "month")
-  end_date <- lubridate::ceiling_date(lubridate::as_date(date), "month") - lubridate::ddays(1)
+  start_date <- lubridate::ceiling_date(lubridate::as_date(date) - lubridate::dmonths(months + 1), "month")
+  end_date <- lubridate::floor_date(lubridate::as_date(date), "month") - lubridate::ddays(1)
 
   ndays <- as.integer(lubridate::as_date(Sys.Date()) - lubridate::as_date(start_date)) + 1
 

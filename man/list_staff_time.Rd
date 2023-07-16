@@ -18,5 +18,5 @@ a flextable showing name, date, time in and time out by rows
 List Staff Time
 }
 \examples{
-list_staff_time(name="Reynolds, Keisha", start_date="2022-01-01") # empty report. Fictional name.
+list_staff_time(name = "Reynolds, Keisha", start_date = "2022-01-01") # Fictional name
 }

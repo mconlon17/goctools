@@ -25,5 +25,5 @@ Get supports from Flourish
 }
 \examples{
 get_supports()
-get_supports(with.members=TRUE) # return outer join of members and supports (large data.frame)
+get_supports(with.members = TRUE) # return outer join of members and supports (large data.frame)
 }

@@ -17,5 +17,5 @@ Get gifts from Flourish
 }
 \examples{
 get_gifts() # All non-deleted gifts
-hist(get_gifts()[,c("flo_gift_amount")]) # Histogram of all gift amounts
+hist(get_gifts()[, c("flo_gift_amount")]) # Histogram of all gift amounts
 }

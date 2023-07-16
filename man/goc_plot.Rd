@@ -16,6 +16,7 @@ a plot that is goc-styled
 GOC Plot
 }
 \examples{
-d <- data.frame(x=1:5, y=4:8)
-goc_plot(ggplot2::ggplot(d, ggplot2::aes(x,y)) + ggplot2::geom_line())
+d <- data.frame(x = 1:5, y = 4:8)
+goc_plot(ggplot2::ggplot(d, ggplot2::aes(x, y)) +
+  ggplot2::geom_line())
 }

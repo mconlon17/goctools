@@ -13,6 +13,7 @@
 #' @examples
 #' list_supports_by_member_and_type()
 list_supports_by_member_and_type <- function() {
+  
   Member <- last_name <- first_name <- narrow <- n <- NULL
 
   supports <- get_supports(with.members = T) %>%
