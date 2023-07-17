@@ -1,4 +1,6 @@
 #' Establish a database connection to Flourish
+#' 
+#' @importFrom keyring key_get
 #'
 #' @return a database connection
 #'
@@ -7,6 +9,7 @@
 #' @examples
 #' con <- flourish_connection()
 #' RMySQL::dbDisconnect(con)
+
 flourish_connection <- function() {
   RMySQL::dbConnect(RMySQL::MySQL(),
     dbname   = keyring::key_get("Flourish GOC production dbname"),
