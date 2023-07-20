@@ -30,7 +30,8 @@
 plot_member_attendance_by_month <- function(start_date = as_date("2008-01-01"), end_date = Sys.Date()) {
   YearMonth <- c2_groups <- da_date_of_attendance <- n <- NULL
 
-  end_date <- lubridate::rollback(end_date)
+  start_date <- lubridate::as_date(start_date)
+  end_date <- lubridate::rollback(lubridate::as_date(end_date))
 
   contacts <- get_contacts() %>%
     dplyr::filter(grepl("Member", c2_groups))
